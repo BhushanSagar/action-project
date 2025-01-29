@@ -1,0 +1,40 @@
+name: Data Cleaning with PySpark
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python environment
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyspark
+
+    - name: Run PySpark Data Cleaning Script
+      run: |
+        python your_script.py
+
+    - name: Commit and push cleaned data
+      run: |
+        git add cleaned_data.csv
+        git commit -m "Add cleaned data file"
+        git push
+
+    - name: Upload logs
+      uses: actions/upload-artifact@v2
+      with:
+        name: log-file
+        path: log.txt
