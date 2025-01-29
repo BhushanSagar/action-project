@@ -25,7 +25,7 @@ jobs:
 
     - name: Run PySpark Data Cleaning Script
       run: |
-        python your_script.py
+        python app.py
 
     - name: Commit and push cleaned data
       run: |
