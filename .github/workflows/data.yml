@@ -27,6 +27,11 @@ jobs:
       run: |
         python app.py
 
+    - name: Set Git user info
+      run: |
+        git config --global user.email "aeronautbhushan@gmail.com"
+        git config --global user.name "bhushan"
+
     - name: Commit and push cleaned data
       run: |
         git add cleaned_data.csv
