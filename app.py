@@ -46,6 +46,6 @@ clean_df = df.withColumn("Email", trim(col("Email"))) \
              .withColumn("Address", trim(col("Address")))
 
 # Save cleaned data (using coalesce to output to a single file)
-clean_df.coalesce(1).write.option("header", "true").csv("cleaned_data.csv")
+clean_df.coalesce(1).overwrite.option("header", "true").csv("cleaned_data.csv")
 
 print("Validation completed. Check log.txt for details.")
